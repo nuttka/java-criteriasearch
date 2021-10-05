@@ -7,23 +7,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "target_market")
-public class TargetMarket {
-    
+@Table(name = "technology")
+public class Technology {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
+    
     @Column(name = "name")
     private String name;
 
-    public TargetMarket() {
+    public Technology() {
 
     }
 
-    public TargetMarket(String name) {
+    public Technology(String name) {
         super();
         this.name = name;
     }
@@ -43,5 +44,5 @@ public class TargetMarket {
     public void setName(String name) {
         this.name = name;
     }
-
+    
 }
