@@ -18,14 +18,18 @@ public class TargetMarket {
 
     @Column(name = "name")
     private String name;
+    
+    @Column(name = "active")
+    private Boolean active;
 
     public TargetMarket() {
 
     }
 
-    public TargetMarket(String name) {
+    public TargetMarket(String name, Boolean active) {
         super();
         this.name = name;
+        this.active = active;
     }
 
     public Integer getId() {
@@ -43,5 +47,12 @@ public class TargetMarket {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public Boolean getActive() {
+        return active;
+    }
 
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 }

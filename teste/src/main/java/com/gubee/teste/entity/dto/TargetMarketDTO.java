@@ -9,13 +9,17 @@ public class TargetMarketDTO {
     @NotNull(message = "Nome do mercado alvo não pode ser nulo")
     private String name;
 
+    @NotNull(message = "Produto precisa estar ativo ou não")
+    private Boolean active;
+
     public TargetMarketDTO() {
 
     }
 
-    public TargetMarketDTO(String name) {
+    public TargetMarketDTO(String name, Boolean active) {
         super();
         this.name = name;
+        this.active = active;
     }
 
     public Integer getId() {
@@ -32,6 +36,14 @@ public class TargetMarketDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
 }

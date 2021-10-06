@@ -22,16 +22,20 @@ public class ProductDTO {
     @NotNull(message = "Tecnologia do produto não pode ser nulo")
     private ArrayList<Technology> technologies;
 
+    @NotNull(message = "Produto precisa estar ativo ou não")
+    private Boolean active;
+
     public ProductDTO() {
 
     }
 
-    public ProductDTO(String name, String description, ArrayList<TargetMarket> targetMarkets, ArrayList<Technology> technologies) {
+    public ProductDTO(String name, String description, ArrayList<TargetMarket> targetMarkets, ArrayList<Technology> technologies, Boolean active) {
         super();
         this.name = name;
         this.description = description;
         this.targetMarkets = targetMarkets;
         this.technologies = technologies;
+        this.active = active;
     }
 
     public Integer getId() {
@@ -74,6 +78,15 @@ public class ProductDTO {
     public void setTechnologies(ArrayList<Technology> technologies) {
         this.technologies = technologies;
     }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+    
 }
 
 

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "product")
 public class Product {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -30,16 +30,21 @@ public class Product {
     @Column(name = "technologies")
     private ArrayList<Technology> technologies;
 
+    @Column(name = "active")
+    private Boolean active;
+
+
     public Product() {
 
     }
 
-    public Product(String name, String description, ArrayList<TargetMarket> targetMarkets, ArrayList<Technology> technologies) {
+    public Product(String name, String description, ArrayList<TargetMarket> targetMarkets, ArrayList<Technology> technologies, Boolean active) {
         super();
         this.name = name;
         this.description = description;
         this.targetMarkets = targetMarkets;
         this.technologies = technologies;
+        this.active = active;
     }
 
     public Integer getId() {
@@ -82,4 +87,13 @@ public class Product {
     public void setTechnologies(ArrayList<Technology> technologies) {
         this.technologies = technologies;
     }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
 }

@@ -7,15 +7,18 @@ public class TechnologyDTO {
     
     @NotNull(message = "Nome da tecnologia não pode ser nulo")
     private String name;
+    
+    @NotNull(message = "Produto precisa estar ativo ou não")
+    private Boolean active;
 
     public TechnologyDTO() {
 
     }
 
-    public TechnologyDTO(Integer id, String name) {
+    public TechnologyDTO(String name, Boolean active) {
         super();
-        this.id = id;
         this.name = name;
+        this.active = active;
     }
 
     public Integer getId() {
@@ -32,6 +35,14 @@ public class TechnologyDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
     
 }
