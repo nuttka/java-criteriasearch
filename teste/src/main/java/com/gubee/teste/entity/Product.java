@@ -1,12 +1,18 @@
 package com.gubee.teste.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -24,11 +30,25 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "targetMarkets")
-    private ArrayList<TargetMarket> targetMarkets;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "product_target_market",
+            joinColumns = {
+                    @JoinColumn(name = "product_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "target_market_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
+    private List<TargetMarket> targetMarkets = new ArrayList<>();
     
-    @Column(name = "technologies")
-    private ArrayList<Technology> technologies;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "product_technology",
+            joinColumns = {
+                    @JoinColumn(name = "product_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "technology_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
+    private List<Technology> technologies = new ArrayList<>();
 
     @Column(name = "active")
     private Boolean active;
@@ -71,7 +91,7 @@ public class Product {
         this.description = description;
     }
 
-    public ArrayList<TargetMarket> getTargetMarkets() {
+    public List<TargetMarket> getTargetMarkets() {
         return targetMarkets;
     }
 
@@ -80,7 +100,7 @@ public class Product {
         this.targetMarkets = targetMarkets;
     }
     
-    public ArrayList<Technology> getTechnologies() {
+    public List<Technology> getTechnologies() {
         return technologies;
     }
     
