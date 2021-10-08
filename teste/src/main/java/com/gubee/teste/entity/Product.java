@@ -58,7 +58,7 @@ public class Product {
 
     }
 
-    public Product(String name, String description, ArrayList<TargetMarket> targetMarkets, ArrayList<Technology> technologies, Boolean active) {
+    public Product(String name, String description, List<TargetMarket> targetMarkets, List<Technology> technologies, Boolean active) {
         super();
         this.name = name;
         this.description = description;
@@ -96,7 +96,7 @@ public class Product {
     }
 
     
-    public void setTargetMarkets(ArrayList<TargetMarket> targetMarkets) {
+    public void setTargetMarkets(List<TargetMarket> targetMarkets) {
         this.targetMarkets = targetMarkets;
     }
     
@@ -104,7 +104,7 @@ public class Product {
         return technologies;
     }
     
-    public void setTechnologies(ArrayList<Technology> technologies) {
+    public void setTechnologies(List<Technology> technologies) {
         this.technologies = technologies;
     }
 
