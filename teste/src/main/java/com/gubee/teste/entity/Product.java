@@ -1,7 +1,7 @@
 package com.gubee.teste.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,7 +38,7 @@ public class Product {
             inverseJoinColumns = {
                     @JoinColumn(name = "target_market_id", referencedColumnName = "id",
                             nullable = false, updatable = false)})
-    private List<TargetMarket> targetMarkets = new ArrayList<>();
+    private Set<TargetMarket> targetMarkets = new HashSet<>();
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "product_technology",
@@ -48,7 +48,7 @@ public class Product {
             inverseJoinColumns = {
                     @JoinColumn(name = "technology_id", referencedColumnName = "id",
                             nullable = false, updatable = false)})
-    private List<Technology> technologies = new ArrayList<>();
+    private Set<Technology> technologies = new HashSet<>();
 
     @Column(name = "active")
     private Boolean active;
@@ -58,7 +58,7 @@ public class Product {
 
     }
 
-    public Product(String name, String description, List<TargetMarket> targetMarkets, List<Technology> technologies, Boolean active) {
+    public Product(String name, String description, Set<TargetMarket> targetMarkets, Set<Technology> technologies, Boolean active) {
         super();
         this.name = name;
         this.description = description;
@@ -91,20 +91,20 @@ public class Product {
         this.description = description;
     }
 
-    public List<TargetMarket> getTargetMarkets() {
+    public Set<TargetMarket> getTargetMarkets() {
         return targetMarkets;
     }
 
     
-    public void setTargetMarkets(List<TargetMarket> targetMarkets) {
+    public void setTargetMarkets(Set<TargetMarket> targetMarkets) {
         this.targetMarkets = targetMarkets;
     }
     
-    public List<Technology> getTechnologies() {
+    public Set<Technology> getTechnologies() {
         return technologies;
     }
     
-    public void setTechnologies(List<Technology> technologies) {
+    public void setTechnologies(Set<Technology> technologies) {
         this.technologies = technologies;
     }
 

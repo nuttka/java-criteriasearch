@@ -2,6 +2,7 @@ package com.gubee.teste.service;
 
 import com.gubee.teste.entity.Product;
 import com.gubee.teste.exception.ObjectNotFoundException;
+import com.gubee.teste.filter.FilterProduct;
 import com.gubee.teste.repository.ProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class ProductService {
 
     public List<Product> findAll() {
         return repository.findAll();
+    }
+
+    public List<Product> searchProduct(FilterProduct FilterProduct) {
+        return repository.searchByFilter(FilterProduct);
     }
     
 }

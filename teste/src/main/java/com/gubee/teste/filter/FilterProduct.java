@@ -1,38 +1,35 @@
 package com.gubee.teste.filter;
 
-import java.util.List;
-
-import com.gubee.teste.entity.TargetMarket;
-import com.gubee.teste.entity.Technology;
+import java.util.Set;
 
 
 
 public class FilterProduct {
-    private List<TargetMarket> targetMarkets;
+    private Set<String> targetMarkets;
     
-    private List<Technology> technologies;
+    private Set<String> technologies;
 
     FilterProduct() {
     }
 
-    FilterProduct(List<TargetMarket> targetMarkets, List<Technology> technologies) {
+    FilterProduct(Set<String> targetMarkets, Set<String> technologies) {
         this.targetMarkets = targetMarkets;
         this.technologies = technologies;
     }
 
-    public List<TargetMarket> getTargetMarkets() {
+    public Set<String> getTargetMarkets() {
         return targetMarkets;
     }
 
-    public void setTargetMarkets(List<TargetMarket> targetMarkets) {
+    public void setTargetMarkets(Set<String> targetMarkets) {
         this.targetMarkets = targetMarkets;
     }
 
-    public List<Technology> getTechnology() {
+    public Set<String> getTechnologies() {
         return technologies;
     }
 
-    public void setTechnology(List<Technology> technologies) {
+    public void setTechnologies(Set<String> technologies) {
         this.technologies = technologies;
     }
 }

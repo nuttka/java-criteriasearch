@@ -8,7 +8,6 @@ import com.gubee.teste.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +27,7 @@ public class ProductController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<List<Product>> searchProduct(@Validated @RequestBody FilterProduct FilterProduct){
+    public ResponseEntity<List<Product>> searchProduct(@RequestBody FilterProduct FilterProduct){
         return ResponseEntity.ok().body(productService.searchProduct(FilterProduct));
     }
     
