@@ -17,7 +17,7 @@ import com.gubee.teste.filter.FilterProduct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ProductRepositoryImpl implements ProductRepositoryCustom{
+public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
     @Autowired
     private EntityManager entityManager;
@@ -45,7 +45,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom{
             }
         }
 
-        criteriaQuery.select(product)
+        criteriaQuery.select(product).distinct(true)
             .where(predicates.toArray(new Predicate[predicates.size()]));
 
         return entityManager.createQuery(criteriaQuery)
