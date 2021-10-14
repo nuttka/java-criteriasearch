@@ -1,20 +1,20 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
-import { ProductDTO } from "../model/product/ProductDTO.model";
+import { TargetMarketDTO } from "../model/targetMarket/TargetMarketDTO.model";
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductService {
+export class TargetMarketService {
 
     private url = "http://localhost:8080";
 
     constructor(private http: HttpClient) {}
 
-    public getAllProducts(): Observable<ProductDTO[]> {
-        return this.http.get<ProductDTO[]>(`${this.url}/product/`);
+    public getAllTargetMarkets(): Observable<TargetMarketDTO[]> {
+        return this.http.get<TargetMarketDTO[]>(`${this.url}/product/`);
     }
 
 }
