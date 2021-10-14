@@ -14,7 +14,7 @@ export class TargetMarketService {
     constructor(private http: HttpClient) {}
 
     public getAllTargetMarkets(): Observable<TargetMarketDTO[]> {
-        return this.http.get<TargetMarketDTO[]>(`${this.url}/product/`);
+        return this.http.get<TargetMarketDTO[]>(`${this.url}/targetMarket/`);
     }
 
 }

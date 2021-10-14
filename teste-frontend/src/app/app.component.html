@@ -1,15 +1,19 @@
-<div>
-  <input type="checkbox">
+<div *ngFor="let targetMarketTechnology of targetMarketsTechnologies">
+  <input type="checkbox" [(ngModel)]="targetMarketTechnology.check" /> {{ targetMarketTechnology.name }}
 </div>
 
-<table mdbTable>
-  <thead class="black white-text">
+<div>
+  <button (click)="filter()">Clique</button>
+</div>
+
+<table>
+  <thead>
     <tr>
       <th *ngFor="let head of headElements" scope="col">{{head}} </th>
     </tr>
   </thead>
   <tbody>
-    <tr mdbTableCol *ngFor="let product of tableProducts">
+    <tr *ngFor="let product of tableProducts">
       <td>{{product.name}}</td>
       <td>{{product.description}}</td>
       <td>{{product.targetMarkets}}</td>

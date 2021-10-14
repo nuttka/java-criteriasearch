@@ -17,4 +17,8 @@ export class ProductService {
         return this.http.get<ProductDTO[]>(`${this.url}/product/`);
     }
 
+    public filterSearch(targetMarkets: string[], technologies: string[]): Observable<ProductDTO[]> {
+        return this.http.post<ProductDTO[]>(`${this.url}/product/search/`, {targetMarkets, technologies});
+    }
+
 }
