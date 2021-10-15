@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   headElements = ["Nome", "Descrição", "Mercados alvo", "Tecnologias"];
   targetMarketsTechnologies: any[] = [];
   tableProducts: any[] = [];
+  title: any;
 
   constructor(
     private productService: ProductService,
@@ -75,13 +76,15 @@ export class AppComponent implements OnInit {
   }
 
   generateTableProducts(): void {
+    this.tableProducts = [];
     this.products.forEach(product => {
-      let stringArray: string[] = [];
+      let TargetMarketStringArray: string[] = [];
+      let technologyStringArray: string[] = [];
       let tableProduct = {
         name: product.name,
         description: product.description,
-        technologies: stringArray,
-        targetMarkets: stringArray
+        technologies: technologyStringArray,
+        targetMarkets: TargetMarketStringArray
       };
 
       product.targetMarkets.forEach(targetMarket => {
@@ -116,7 +119,11 @@ export class AppComponent implements OnInit {
     this.defineSearchFilter();
 
     this.productService.filterSearch(this.tagertMarketFilterParams, this.technologyFilterParams).subscribe((res: ProductDTO[]) => {
-      this.products = res;  
+      if (res.length == 0) {
+        this.getProducts();
+      } else {
+        this.products = res;
+      }
       this.generateTableProducts();             
     }, error => {
       console.log("Error:" + error.toString());

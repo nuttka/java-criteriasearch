@@ -33,6 +33,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
         List<Predicate> predicates = new ArrayList<Predicate>();
 
+
         if (filterProduct.getTargetMarkets() != null) {
             for (String targetMarket : filterProduct.getTargetMarkets()) {
                 predicates.add(criteriaBuilder.like(productTargetMarketJoin.get("name"), targetMarket));
@@ -46,7 +47,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
         }
 
         criteriaQuery.select(product).distinct(true)
-            .where(predicates.toArray(new Predicate[predicates.size()]));
+            .where(criteriaBuilder.or(predicates.toArray(new Predicate[predicates.size()])));
 
         return entityManager.createQuery(criteriaQuery)
             .getResultList();
