@@ -1,6 +1,7 @@
 package com.gubee.teste.service;
 
 import com.gubee.teste.entity.Product;
+import com.gubee.teste.exception.BadRequestException;
 import com.gubee.teste.exception.ObjectNotFoundException;
 import com.gubee.teste.filter.FilterProduct;
 import com.gubee.teste.repository.ProductRepository;
@@ -26,8 +27,11 @@ public class ProductService {
         return repository.findAll();
     }
 
-    public List<Product> searchProduct(FilterProduct FilterProduct) {
-        return repository.searchByFilter(FilterProduct);
+    public List<Product> searchProduct(FilterProduct filterProduct) {
+        if(filterProduct == null) {
+            throw new BadRequestException("filterProduct não pode ser nulo.");
+        }
+        return repository.searchByFilter(filterProduct);
     }
     
 }

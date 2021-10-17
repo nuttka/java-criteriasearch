@@ -28,6 +28,11 @@ public class ProductController {
         return ResponseEntity.ok().body(productService.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> findById(@PathVariable Integer id) {
+        return ResponseEntity.ok().body(productService.findById(id));
+    }
+
     @PostMapping("/search")
     public ResponseEntity<List<Product>> searchProduct(@RequestBody FilterProduct FilterProduct){
         return ResponseEntity.ok().body(productService.searchProduct(FilterProduct));

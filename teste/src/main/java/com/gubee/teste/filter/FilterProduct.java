@@ -9,10 +9,10 @@ public class FilterProduct {
     
     private Set<String> technologies;
 
-    FilterProduct() {
+    public FilterProduct() {
     }
 
-    FilterProduct(Set<String> targetMarkets, Set<String> technologies) {
+    public FilterProduct(Set<String> targetMarkets, Set<String> technologies) {
         this.targetMarkets = targetMarkets;
         this.technologies = technologies;
     }
